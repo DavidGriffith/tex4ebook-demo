@@ -1,0 +1,104 @@
+\documentclass[12pt]{memoir}
+
+\usepackage{fontspec}
+\usepackage{fullpage}
+\usepackage{libertine}
+\usepackage{lipsum}
+\usepackage{hyperxmp}
+\usepackage[pdfusetitle,colorlinks]{hyperref}
+
+\newfontfamily
+\bordeauxfont[%
+  ItalicFont={BordeauxLight-Italic}
+]{BordeauxLight}
+
+%% for some stupid reason, I can't use \textit{} in the title
+\newfontfamily
+\bordeauxfontitalic[%
+]{BordeauxLight-Italic}
+
+\title{\Huge\textbf{Demonstrations of tex4ebook: Book 1}}
+\author{David Griffith}
+\date{December 26, 2018}
+
+\hypersetup{%
+  pdftitle={\title},
+  pdfauthor={\author},
+  bookmarksnumbered,
+  pdfstartview={FitH},
+  allcolors=black,
+  pdfcopyright={Copyright 2019 by \author.}
+  pdfinfo={
+    Copyright={Copyright 2019 by \author.}
+  }
+}
+
+\begin{document}
+
+\frontmatter
+\maketitle
+\cleartorecto
+\tableofcontents*
+
+\mainmatter
+\parskip=12pt
+
+\chapter*{\bordeauxfont Foreword}
+\addcontentsline{toc}{chapter}{Foreword}
+This document is part of an ongoing experiment with Michal Hoftich's 
+fine \LaTeX\ package, tex4ebook.  The objective of this project is to 
+make sure that a document may be build with and without assistance from 
+tex4ebook.  The upshot of this is to assure authors of a reliable means 
+of writing books using \LaTeX\ that can effortlessly be rebuilt for any 
+of the ebook formats supported by tex4ebook (epub, epub3, and mobi).
+
+\chapter[The Sun Rises]
+{The\\
+Sun\\
+Rises}
+\lipsum[1-20]
+
+\chapter[When the Rays First Fall]
+{When the\\
+Rays First\\
+Fall}
+\lipsum[21-40]
+
+\chapter[Second Breakfast Redeaux]
+{Second\\
+Breakfast\\
+Redeaux}
+\lipsum[41-60]
+
+\chapter[An Especially Unknown Noontime]
+{An Especially\\
+Unknown\\
+Noontime}
+\lipsum[61-80]
+
+\chapter[Golden Afternoon with Alice]
+{Golden Afternoon\\
+with\\
+Alice}
+\lipsum[81-100]
+
+\chapter[Velvet Sunset in Acrylic]
+{Velvet Sunset\\
+in\\
+Acrylic}
+\lipsum[101-120]
+
+\chapter[Inky Night and the Pelikans]
+{Inky Night\\
+and the\\
+Pelikans}
+\lipsum[121-140]
+
+\backmatter
+\appendix
+
+\chapter{Colophon}
+\thispagestyle{empty}
+\lipsum[141-144]
+
+\end{document}
