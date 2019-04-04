@@ -1,0 +1,200 @@
+\documentclass[12pt]{memoir}
+
+\usepackage{libertine}
+\usepackage{svg}
+\usepackage{fontspec}
+\usepackage{fullpage}
+\usepackage{lipsum}
+\usepackage{hyperxmp}
+\usepackage[pdfusetitle,colorlinks]{hyperref}
+
+\hypersetup{%
+  pdftitle={\title},
+  pdfauthor={\author},
+  bookmarksnumbered,
+  pdfstartview={FitH},
+  allcolors=black,
+  pdfcopyright={Copyright 2019 by \author.}
+  pdfinfo={
+    Copyright={Copyright 2019 by \author.}
+  }
+}
+
+
+%%%%%%%%%%%%%%
+%% Font setup
+%%%%%%%%%%%%%%
+\newfontfamily
+\bordeauxfont[%
+  ItalicFont={BordeauxLight-Italic}
+]{BordeauxLight}
+
+%% for some stupid reason, I can't use \textit{} in the title
+\newfontfamily
+\bordeauxfontitalic[%
+]{BordeauxLight-Italic}
+
+\title{\Huge\textbf{Demonstrations of tex4ebook: Book 2}}
+\author{David Griffith}
+\date{April 4, 2019}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Customize the look of the chapters and Table of Contents
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand\cftchapteraftersnumb{\bordeauxfont}
+\renewcommand\cftbeforechapterskip{5pt plus 1pt}
+\renewcommand*{\aftertoctitle}{\thispagestyle{plain}%
+  \par\nobreak \mbox{}\hfill{\normalsize\bordeauxfont page}\par\nobreak}
+\renewcommand{\cftchapterleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\chaptername}{\bordeauxfont CHAPTER}
+\renewcommand{\thechapter}{\bordeauxfont \Roman{chapter}: }
+\renewcommand{\cftchapterfont}{\bordeauxfont}
+\renewcommand{\cftchapterpagefont}{\bordeauxfont}
+\renewcommand{\cftchapternumwidth}{2.5em}
+
+
+%% Put a nice graphic to the left of chapter headers
+
+\makeatletter
+\def\@makechapterhead#1{%
+  \chapterheadstart%
+  {\parskip \z@
+   \parindent \z@ 
+   \sbox0{\parbox[b]{\dimexpr\textwidth-2cm-\columnsep}{% graphic width 2cm
+     \memRTLraggedright \normalfont
+     \ifm@m@And
+       \printchaptername \chapternamenum \printchapternum
+       \afterchapternum % \par\nobreak \vskip 20\p@
+     \else
+       \printchapternonum
+     \fi
+     \interlinepenalty\@M
+     \printchaptertitle{#1}}}% \Huge \bfseries #1
+   \raisebox{-\dp0}[\ht0][\dp0]{% [\ht0][\dp0] redundant in this case
+     \includesvg[height={\dimexpr\ht0+\dp0},width=2cm]{chapter-graphic}}%
+   \hspace{\columnsep}\usebox0%
+   \afterchaptertitle%
+  }}
+\makeatother
+
+%% Same as above, but for starred chapters
+
+\makeatletter
+\def\@makechapterhead#1{%
+  \chapterheadstart%
+  {\parskip \z@
+   \parindent \z@ 
+   \sbox0{\parbox[b]{\dimexpr\textwidth-2cm-\columnsep}{% graphic width 2cm
+     \memRTLraggedright \normalfont
+     \ifm@m@And
+%% This is what we don't want to appear for starred chapters.
+%       \printchaptername \chapternamenum \printchapternum
+       \afterchapternum % \par\nobreak \vskip 20\p@
+     \else
+       \printchapternonum
+     \fi
+     \interlinepenalty\@M
+     \printchaptertitle{#1}}}% \Huge \bfseries #1
+   \raisebox{-\dp0}[\ht0][\dp0]{% [\ht0][\dp0] redundant in this case
+     \includesvg[height={\dimexpr\ht0+\dp0},width=2cm]{chapter-graphic}}%
+   \hspace{\columnsep}\usebox0%
+   \afterchaptertitle%
+  }}
+\makeatother
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Stuff for nice star breaks
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\snowflake}{%
+%\psvectorian[scale=0.15]{12}
+\Huge\textbf{*}\normalsize
+}
+
+
+%%%%%%%%%%%%%%%%
+%% For dropcaps
+%%%%%%%%%%%%%%%%
+\newcommand\dropcap[2]{\lettrine[lraise=0.1, nindent=0em, lines=3]{#1}{#2}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\frontmatter
+\maketitle
+\cleartorecto
+\tableofcontents*
+
+\mainmatter
+\parskip=12pt
+
+\chapter*{\bordeauxfont Foreword}
+\addcontentsline{toc}{chapter}{Foreword}
+This document is part of an ongoing experiment with Michal Hoftich's 
+fine \LaTeX\ package, tex4ebook.  The objective of this project is to 
+make sure that a document may be build with and without assistance from 
+tex4ebook.  The upshot of this is to assure authors of a reliable means 
+of writing books using \LaTeX\ that can effortlessly be rebuilt for any 
+of the ebook formats supported by tex4ebook (epub, epub3, and mobi).
+
+This book is a slightly more complicated one than Book 1.  It is
+essentially a distillation of an ongoing project of mine to convert a
+privately published book typeset in Pagemaker 5 to \LaTeX.  The document
+class is \textit{memoir}, uses Xe\LaTeX\ rather than regular \LaTeX, and
+uses a lot of packages and font changes.
+
+
+\chapter[The Sun Rises]
+{The\\
+Sun\\
+Rises}
+\lipsum[1-20]
+
+\chapter[When the Rays First Fall]
+{When the\\
+Rays First\\
+Fall}
+\lipsum[21-40]
+
+\chapter[Second Breakfast Redeaux]
+{Second\\
+Breakfast\\
+Redeaux}
+\lipsum[41-60]
+
+\chapter[An Especially Unknown Noontime]
+{An Especially\\
+Unknown\\
+Noontime}
+\lipsum[61-80]
+
+\chapter[Golden Afternoon with Alice]
+{Golden Afternoon\\
+with\\
+Alice}
+\lipsum[81-100]
+
+\chapter[Velvet Sunset in Acrylic]
+{Velvet Sunset\\
+in\\
+Acrylic}
+\lipsum[101-120]
+
+\chapter[Inky Night and the Pelikans]
+{Inky Night\\
+and the\\
+Pelikans}
+\lipsum[121-140]
+
+\backmatter
+\appendix
+
+\chapter{Colophon}
+\thispagestyle{empty}
+\lipsum[141-144]
+
+\end{document}

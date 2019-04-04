@@ -1,25 +1,14 @@
-\documentclass[12pt]{memoir}
+\documentclass[12pt]{book}
 
-\usepackage{fontspec}
 \usepackage{fullpage}
 \usepackage{libertine}
 \usepackage{lipsum}
 \usepackage{hyperxmp}
 \usepackage[pdfusetitle,colorlinks]{hyperref}
 
-\newfontfamily
-\bordeauxfont[%
-  ItalicFont={BordeauxLight-Italic}
-]{BordeauxLight}
-
-%% for some stupid reason, I can't use \textit{} in the title
-\newfontfamily
-\bordeauxfontitalic[%
-]{BordeauxLight-Italic}
-
 \title{\Huge\textbf{Demonstrations of tex4ebook: Book 1}}
 \author{David Griffith}
-\date{December 26, 2018}
+\date{April 4, 2019}
 
 \hypersetup{%
   pdftitle={\title},
@@ -37,13 +26,12 @@
 
 \frontmatter
 \maketitle
-\cleartorecto
 \tableofcontents*
 
 \mainmatter
 \parskip=12pt
 
-\chapter*{\bordeauxfont Foreword}
+\chapter*{Foreword}
 \addcontentsline{toc}{chapter}{Foreword}
 This document is part of an ongoing experiment with Michal Hoftich's 
 fine \LaTeX\ package, tex4ebook.  The objective of this project is to 
