@@ -17,29 +17,26 @@ NAME = demo
 TITLE = "Demonstrations of tex4ebook"
 VERSION = 0.1
 DISTNAME = $(NAME)-$(VERSION)
-ARTDIR = art
 
 PDF = demo1.pdf
 EPUB = demo1.epub
 
 all:	book1 book2
+book1:	book1.pdf book1.epub
+book2:	book2.pdf book2.epub
 
-book1:	book1-pdf book1-epub
-
-book2:	book2-pdf book2-epub
-
-book1-pdf:
+book1.pdf:
 	$(PDFLATEX) book1
 	$(PDFLATEX) book1
 
-book1-epub:
+book1.epub:
 	$(TEX4EBOOK) -c book1.cfg book1
 
-book2-pdf:
+book2.pdf:
 	$(XELATEX) $(XELATEX_OPTS) book2
 	$(XELATEX) $(XELATEX_OPTS) book2
 
-book2-epub:
+book2.epub:
 	$(TEX4EBOOK) -xs -c book2.cfg book2
 
 dist:
