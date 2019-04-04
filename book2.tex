@@ -55,7 +55,6 @@
 
 
 %% Put a nice graphic to the left of chapter headers
-
 \makeatletter
 \def\@makechapterhead#1{%
   \chapterheadstart%
@@ -70,7 +69,7 @@
        \printchapternonum
      \fi
      \interlinepenalty\@M
-     \printchaptertitle{#1}}}% \Huge \bfseries #1
+     \printchaptertitle{\bordeauxfont #1}}}% \Huge \bfseries #1
    \raisebox{-\dp0}[\ht0][\dp0]{% [\ht0][\dp0] redundant in this case
      \includesvg[height={\dimexpr\ht0+\dp0},width=2cm]{chapter-graphic}}%
    \hspace{\columnsep}\usebox0%
@@ -79,7 +78,6 @@
 \makeatother
 
 %% Same as above, but for starred chapters
-
 \makeatletter
 \def\@makechapterhead#1{%
   \chapterheadstart%
@@ -95,7 +93,7 @@
        \printchapternonum
      \fi
      \interlinepenalty\@M
-     \printchaptertitle{#1}}}% \Huge \bfseries #1
+     \printchaptertitle{\fontsize{60}{60}\bordeauxfontitalic #1}}}% \Huge \bfseries #
    \raisebox{-\dp0}[\ht0][\dp0]{% [\ht0][\dp0] redundant in this case
      \includesvg[height={\dimexpr\ht0+\dp0},width=2cm]{chapter-graphic}}%
    \hspace{\columnsep}\usebox0%
