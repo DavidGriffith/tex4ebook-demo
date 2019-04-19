@@ -4,6 +4,7 @@
 #	TeX Live
 #	tex4ebook
 
+TEX = tex
 LATEX = latex
 PDFLATEX = pdflatex
 XELATEX = xelatex
@@ -29,15 +30,18 @@ book1.pdf:
 	$(PDFLATEX) book1
 	$(PDFLATEX) book1
 
-book1.epub:
-	$(TEX4EBOOK) -c book1.cfg book1
+book1.epub: fontfix
+	$(TEX4EBOOK) -f epub+common_domfilter -c book1.cfg book1.tex
 
 book2.pdf:
 	$(XELATEX) $(XELATEX_OPTS) book2
 	$(XELATEX) $(XELATEX_OPTS) book2
 
-book2.epub:
+book2.epub: fontfix
 	$(TEX4EBOOK) -xs -c book2.cfg book2
+
+fontfix:
+	$(TEX) fontfix.tex
 
 dist:
 	git archive --format=tar.gz --prefix $(DISTNAME)/ -o $(DISTNAME).tar.gz HEAD
@@ -48,6 +52,7 @@ distclean: clean
 
 clean:
 	rm -f *.html *.dvi *.eps
+	rm -f *.htf
 	rm -f *.aux *.log *.out *.toc *.bbl *blg *.cot *.idx
 	rm -f *.tmp *.xref *.4ct *.4tc *.idv *.css *.lg
 	rm -f *.mx1 *.mx2 *.opf *.ncx *.env *.bak *.xdv
