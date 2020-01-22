@@ -40,7 +40,12 @@ book2.pdf:
 book2.epub: fontfix
 	$(TEX4EBOOK) -xs -c book2.cfg book2
 
+makehtf:
+	latex book1
+	texlua makehtf.lua book1.dvi
+
 fontfix:
+	$(TEX) fontfix.tex
 	$(TEX) fontfix.tex
 
 dist:
